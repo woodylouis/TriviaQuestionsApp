@@ -12,6 +12,7 @@
 		3E2CFCC01F5F981D00F44FC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E2CFCBE1F5F981D00F44FC5 /* Main.storyboard */; };
 		3E2CFCC21F5F981D00F44FC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E2CFCC11F5F981D00F44FC5 /* Assets.xcassets */; };
 		3E2CFCC51F5F981D00F44FC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E2CFCC31F5F981D00F44FC5 /* LaunchScreen.storyboard */; };
+		3E2CFCCD1F5FACFA00F44FC5 /* QuestionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2CFCCC1F5FACFA00F44FC5 /* QuestionsProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		3E2CFCC11F5F981D00F44FC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E2CFCC41F5F981D00F44FC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E2CFCC61F5F981D00F44FC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E2CFCCC1F5FACFA00F44FC5 /* QuestionsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				3E2CFCBA1F5F981D00F44FC5 /* AppDelegate.swift */,
 				3E2CFCBC1F5F981D00F44FC5 /* ViewController.swift */,
 				3E2CFCBE1F5F981D00F44FC5 /* Main.storyboard */,
+				3E2CFCCC1F5FACFA00F44FC5 /* QuestionsProvider.swift */,
 				3E2CFCC11F5F981D00F44FC5 /* Assets.xcassets */,
 				3E2CFCC31F5F981D00F44FC5 /* LaunchScreen.storyboard */,
 				3E2CFCC61F5F981D00F44FC5 /* Info.plist */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E2CFCBD1F5F981D00F44FC5 /* ViewController.swift in Sources */,
+				3E2CFCCD1F5FACFA00F44FC5 /* QuestionsProvider.swift in Sources */,
 				3E2CFCBB1F5F981D00F44FC5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
