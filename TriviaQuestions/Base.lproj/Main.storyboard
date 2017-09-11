@@ -69,9 +69,25 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Next Question"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWu-mj-WAC">
+                                <rect key="frame" x="35" y="587" width="344" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.57647058819999997" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Play Again"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.031372549019607843" green="0.16862745098039217" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="answerA" destination="0f3-AR-3Jp" id="Bmi-dx-qys"/>
+                        <outlet property="answerB" destination="gJd-2C-zIA" id="hEr-tb-BM5"/>
+                        <outlet property="answerC" destination="Fhb-Hg-gLQ" id="rQH-pf-eNA"/>
+                        <outlet property="answerD" destination="x3a-8h-G4j" id="iXC-uP-1G4"/>
+                        <outlet property="playAgainButton" destination="bWu-mj-WAC" id="4W1-nN-baz"/>
+                        <outlet property="questionField" destination="hsL-VI-L3g" id="0uX-7B-8Ed"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
