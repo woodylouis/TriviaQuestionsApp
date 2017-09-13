@@ -13,7 +13,6 @@
 		3E2CFCC21F5F981D00F44FC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E2CFCC11F5F981D00F44FC5 /* Assets.xcassets */; };
 		3E2CFCC51F5F981D00F44FC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E2CFCC31F5F981D00F44FC5 /* LaunchScreen.storyboard */; };
 		3E2CFCCD1F5FACFA00F44FC5 /* QuestionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2CFCCC1F5FACFA00F44FC5 /* QuestionsProvider.swift */; };
-		3E2CFCCF1F662A2500F44FC5 /* GameSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3E2CFCCE1F662A2500F44FC5 /* GameSound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +24,6 @@
 		3E2CFCC41F5F981D00F44FC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E2CFCC61F5F981D00F44FC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E2CFCCC1F5FACFA00F44FC5 /* QuestionsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsProvider.swift; sourceTree = "<group>"; };
-		3E2CFCCE1F662A2500F44FC5 /* GameSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = GameSound.wav; path = "../../../peer answer/project 2/QuizApp-mike/TrueFalseStarter/GameSound.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +62,6 @@
 				3E2CFCCC1F5FACFA00F44FC5 /* QuestionsProvider.swift */,
 				3E2CFCC11F5F981D00F44FC5 /* Assets.xcassets */,
 				3E2CFCC31F5F981D00F44FC5 /* LaunchScreen.storyboard */,
-				3E2CFCCE1F662A2500F44FC5 /* GameSound.wav */,
 				3E2CFCC61F5F981D00F44FC5 /* Info.plist */,
 			);
 			path = TriviaQuestions;
@@ -130,7 +127,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E2CFCCF1F662A2500F44FC5 /* GameSound.wav in Resources */,
 				3E2CFCC51F5F981D00F44FC5 /* LaunchScreen.storyboard in Resources */,
 				3E2CFCC21F5F981D00F44FC5 /* Assets.xcassets in Resources */,
 				3E2CFCC01F5F981D00F44FC5 /* Main.storyboard in Resources */,

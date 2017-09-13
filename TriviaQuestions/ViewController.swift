@@ -7,13 +7,13 @@
 //
 
 import UIKit
-
+import GameKit
 class ViewController: UIViewController {
 
     let questionsPerRound = 4
     var questionsAsked = 0
     var correctQuestions = 0
-    var indexOfSelectedQuestion: Int = 0
+    
     //var gamesound: SystemSoundID = 0
     
     
@@ -25,15 +25,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var answerD: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
     
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    
+    
+    
+    
 
 
     
