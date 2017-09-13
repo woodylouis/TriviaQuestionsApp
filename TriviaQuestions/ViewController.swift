@@ -8,13 +8,17 @@
 
 import UIKit
 import GameKit
+import AudioToolbox
 class ViewController: UIViewController {
 
     let questionsPerRound = 4
     var questionsAsked = 0
     var correctQuestions = 0
-    
-    //var gamesound: SystemSoundID = 0
+    var answer: String = " "
+    var indexOfSelectedQuestion: Int = 0
+    var soundForCorrectAnswer: SystemSoundID = 0
+    var soundForWrongAnswer: SystemSoundID = 0
+    var gamesound: SystemSoundID = 0
     
     
     
