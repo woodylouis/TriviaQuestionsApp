@@ -118,29 +118,32 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func goToNextQuestion() {
+    @IBAction func goToNextQuestion(_ sender: Any) {
         
         
-        if questionsAsked == questionsPerRound {
-            displayScore()
-        } else {
+        if questionsAsked < questionsPerRound {
             displayQuestion()
+        } else {
+            displayScore()
         }
     }
  
     
-    @IBAction func playAagin() {
+    @IBAction func playAagin(_ sender: Any) {
         
-        questions = listOfQuestions
+        //questions = listOfQuestions
         
         answerA.isHidden = false
         answerB.isHidden = false
         answerC.isHidden = false
         answerD.isHidden = false
+        questionField.isHidden = false
+        nextQuestion.isHidden = false
         
         questionsAsked = 0
         numberOfCorrectQuestions = 0
         nextRound()
+        
     }
 
     
