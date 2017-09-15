@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     let questionsPerRound = 4
     var questionsAsked = 0
-    var correctQuestions = 0
+    var numberOfCorrectQuestions = 0
     var correctAnswer: String = " "
     var indexOfSelectedQuestion: Int = 0
     var soundForCorrectAnswer: SystemSoundID = 0
@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var answerB: UIButton!
     @IBOutlet weak var answerC: UIButton!
     @IBOutlet weak var answerD: UIButton!
+    @IBOutlet weak var statusField: UILabel!
     @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var feedbackField: UILabel!
     @IBOutlet weak var nextQuestion: UIButton!
@@ -50,7 +51,7 @@ class ViewController: UIViewController {
         let questions = getRandomQuestion()
         questionField.text = questions.question
         correctAnswer = questions.correctAnswer
-        
+        feedbackField.text = questions.feedback
         //set value for the four answer bottons accordingly
         answerA.setTitle(questions.choiceA, for: .normal)
         answerB.setTitle(questions.choiceB, for: .normal)
@@ -61,23 +62,132 @@ class ViewController: UIViewController {
         playAgainButton.isHidden = true
         feedbackField.isHidden = true
         feedbackLabel.isHidden = true
+        statusField.isHidden = true
+        
+       
     }
-    
     
     @IBAction func checkAnswer(_ sender: UIButton) {
         //Increment the questions asked counter
         questionsAsked += 1
     
-        
-        
+        if (sender.titleLabel?.text == correctAnswer) {
+            numberOfCorrectQuestions += 1
+            statusField.isHidden = false
+            statusField.text = "You got it!"
+            
+            ///To show feedback
+            feedbackLabel.isHidden = false
+            feedbackField.isHidden = false
+            
+        } else {
+            statusField.isHidden = false
+            statusField.text = "Sorry, it is wrong!"
+        }
+        //loadNextRoundWithDelay(seconds: 2)
     }
     
+    func displayScore() {
+        // Hide the answer button
+        questionField.isHidden = true
+        answerA.isHidden = true
+        answerB.isHidden = true
+        answerC.isHidden = true
+        answerD.isHidden = true
+        nextQuestion.isHidden = true
+        playAgainButton.isHidden = false
+        feedbackLabel.isHidden = true
+        feedbackField.isHidden = true
+        
+        statusField.isHidden = false
+        statusField.text = "Way to go!\nYou got \(numberOfCorrectQuestions) out of \(questionsPerRound) correct!"
+    }
     
+    func nextRound() {
+        if questionsAsked == questionsPerRound {
+            // Game is over
+            displayScore()
+        } else {
+            // Continue game
+            displayQuestion()
+        }
+    }
+    
+    @IBAction func goToNextQuestion(_ sender: Any) {
+        
+        
+        if questionsAsked == questionsPerRound {
+            displayScore()
+        } else {
+            displayQuestion()
+        }
+    }
+ 
+    
+    @IBAction func playAagin() {
+        
+        questions = listOfQuestions
+        
+        answerA.isHidden = false
+        answerB.isHidden = false
+        answerC.isHidden = false
+        answerD.isHidden = false
+        
+        questionsAsked = 0
+        numberOfCorrectQuestions = 0
+        nextRound()
+    }
 
     
 
-
-    
-    
+    // MARK: Helper Methods
+    func loadNextRoundWithDelay(seconds: Int) {
+        // Converts a delay in seconds to nanoseconds as signed 64 bit integer
+        let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
+        // Calculates a time value to execute the method given current time and delay
+        let dispatchTime = DispatchTime.now() + Double(delay) / Double(NSEC_PER_SEC)
+        
+        // Executes the nextRound method at the dispatch time on the main queue
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+            self.nextRound()
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
