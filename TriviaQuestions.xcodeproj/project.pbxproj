@@ -13,6 +13,9 @@
 		3E2CFCC21F5F981D00F44FC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E2CFCC11F5F981D00F44FC5 /* Assets.xcassets */; };
 		3E2CFCC51F5F981D00F44FC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E2CFCC31F5F981D00F44FC5 /* LaunchScreen.storyboard */; };
 		3E2CFCCD1F5FACFA00F44FC5 /* QuestionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2CFCCC1F5FACFA00F44FC5 /* QuestionsProvider.swift */; };
+		3E9EECB91F6B61F9002E6EB3 /* CorrectSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3E9EECB61F6B61F9002E6EB3 /* CorrectSound.wav */; };
+		3E9EECBA1F6B61F9002E6EB3 /* GameSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3E9EECB71F6B61F9002E6EB3 /* GameSound.wav */; };
+		3E9EECBB1F6B61F9002E6EB3 /* WrongSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3E9EECB81F6B61F9002E6EB3 /* WrongSound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		3E2CFCC41F5F981D00F44FC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E2CFCC61F5F981D00F44FC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E2CFCCC1F5FACFA00F44FC5 /* QuestionsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsProvider.swift; sourceTree = "<group>"; };
+		3E9EECB61F6B61F9002E6EB3 /* CorrectSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CorrectSound.wav; sourceTree = "<group>"; };
+		3E9EECB71F6B61F9002E6EB3 /* GameSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSound.wav; sourceTree = "<group>"; };
+		3E9EECB81F6B61F9002E6EB3 /* WrongSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WrongSound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				3E2CFCC11F5F981D00F44FC5 /* Assets.xcassets */,
 				3E2CFCC31F5F981D00F44FC5 /* LaunchScreen.storyboard */,
 				3E2CFCC61F5F981D00F44FC5 /* Info.plist */,
+				3E9EECB61F6B61F9002E6EB3 /* CorrectSound.wav */,
+				3E9EECB71F6B61F9002E6EB3 /* GameSound.wav */,
+				3E9EECB81F6B61F9002E6EB3 /* WrongSound.wav */,
 			);
 			path = TriviaQuestions;
 			sourceTree = "<group>";
@@ -129,7 +138,10 @@
 			files = (
 				3E2CFCC51F5F981D00F44FC5 /* LaunchScreen.storyboard in Resources */,
 				3E2CFCC21F5F981D00F44FC5 /* Assets.xcassets in Resources */,
+				3E9EECBB1F6B61F9002E6EB3 /* WrongSound.wav in Resources */,
 				3E2CFCC01F5F981D00F44FC5 /* Main.storyboard in Resources */,
+				3E9EECB91F6B61F9002E6EB3 /* CorrectSound.wav in Resources */,
+				3E9EECBA1F6B61F9002E6EB3 /* GameSound.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

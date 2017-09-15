@@ -16,9 +16,10 @@ class ViewController: UIViewController {
     var numberOfCorrectQuestions = 0
     var correctAnswer: String = " "
     var indexOfSelectedQuestion: Int = 0
-    var soundForCorrectAnswer: SystemSoundID = 0
-    var soundForWrongAnswer: SystemSoundID = 0
-    var gamesound: SystemSoundID = 0
+    var gameSound: SystemSoundID = 0
+    var correctSound: SystemSoundID = 0
+    var wrongSound: SystemSoundID = 0
+
     
     
     
@@ -38,7 +39,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadAllSound()
         displayQuestion()
+        playGameStartSound()
     }
 
     
@@ -75,6 +78,7 @@ class ViewController: UIViewController {
             numberOfCorrectQuestions += 1
             statusField.isHidden = false
             statusField.text = "You got it!"
+            playCorrectSound()
             
             ///To show feedback
             feedbackLabel.isHidden = false
@@ -83,6 +87,7 @@ class ViewController: UIViewController {
         } else {
             statusField.isHidden = false
             statusField.text = "Sorry, it is wrong!"
+            playWrongSound()
         }
         //loadNextRoundWithDelay(seconds: 2)
     }
@@ -113,7 +118,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func goToNextQuestion(_ sender: Any) {
+    @IBAction func goToNextQuestion() {
         
         
         if questionsAsked == questionsPerRound {
@@ -140,7 +145,9 @@ class ViewController: UIViewController {
 
     
 
+    /*
     // MARK: Helper Methods
+    // use next question button to process to next question instead
     func loadNextRoundWithDelay(seconds: Int) {
         // Converts a delay in seconds to nanoseconds as signed 64 bit integer
         let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
@@ -151,8 +158,46 @@ class ViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
             self.nextRound()
         }
+    } */
+    
+    func loadGameStartSound() {
+        let pathToSoundFile = Bundle.main.path(forResource: "GameSound", ofType: "wav")
+        let soundURL = URL(fileURLWithPath: pathToSoundFile!)
+        AudioServicesCreateSystemSoundID(soundURL as CFURL, &gameSound)
+    }
+
+    func playGameStartSound() {
+        AudioServicesPlaySystemSound(gameSound)
+    }
+    
+    func loadCorrectSound() {
+        let pathToSoundFile = Bundle.main.path(forResource: "CorrectSound", ofType: "wav")
+        let soundURL = URL(fileURLWithPath: pathToSoundFile!)
+        AudioServicesCreateSystemSoundID(soundURL as CFURL, &correctSound)
+    }
+    
+    func playCorrectSound() {
+        AudioServicesPlaySystemSound(correctSound)
+    }
+    
+    func loadWrongSound() {
+        let pathToSoundFile = Bundle.main.path(forResource: "WrongSound", ofType: "wav")
+         let soundURL = URL(fileURLWithPath: pathToSoundFile!)
+        AudioServicesCreateSystemSoundID(soundURL as CFURL, &wrongSound)
+    }
+    
+    func playWrongSound() {
+        AudioServicesPlaySystemSound(wrongSound)
+    }
+    
+    func loadAllSound() {
+        loadGameStartSound()
+        loadCorrectSound()
+        loadWrongSound()
     }
 }
+
+
 
 
 
