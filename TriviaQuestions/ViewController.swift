@@ -36,7 +36,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var playAgainButton: UIButton!
     
     
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,23 +66,22 @@ class ViewController: UIViewController {
         feedbackField.isHidden = true
         feedbackLabel.isHidden = true
         statusField.isHidden = true
-        
+        nextQuestionButton.isHidden = true
        
     }
     
     @IBAction func checkAnswer(_ sender: UIButton) {
         //Increment the questions asked counter
         questionsAsked += 1
-    
-        if
-            (sender.titleLabel?.text == correctAnswer) {
+
+        if  (sender.titleLabel?.text == correctAnswer) {
             numberOfCorrectQuestions += 1
             statusField.isHidden = false
             nextQuestionButton.isHidden = false
             statusField.text = "That's correct!!"
             playCorrectSound()
             disableAnswerButton()
-
+            
             ///To show feedback
             showFeedback()
         } else {
@@ -96,8 +94,7 @@ class ViewController: UIViewController {
             playWrongSound()
             
             //loadNextRoundWithDelay(seconds: 6)
-            }
-        
+        }
     }
     
     func displayScore() {
