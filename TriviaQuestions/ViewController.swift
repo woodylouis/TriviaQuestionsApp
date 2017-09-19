@@ -87,12 +87,13 @@ class ViewController: UIViewController {
             showFeedback()
         } else {
             statusField.isHidden = false
-            statusField.text = "Sorry, it is wrong!"
+            statusField.text = "Sorry, it is wrong! \nWait 3 second..."
             feedbackLabel.isHidden = false
             feedbackField.isHidden = false
             nextQuestionButton.isHidden = true
-            
+            //disableAnswerButton()
             playWrongSound()
+            loadNextRoundWithDelay(seconds: 3)
             }
         
     }
@@ -104,7 +105,8 @@ class ViewController: UIViewController {
         nextQuestionButton.isHidden = true
         playAgainButton.isHidden = false
         showFeedback()
-        disableAnswerButton()
+        hideAnswerButton()
+        disableFeedback()
         
         statusField.isHidden = false
         statusField.text = "Way to go!\nYou got \(numberOfCorrectQuestions) out of \(questionsPerRound) correct!"
@@ -117,6 +119,7 @@ class ViewController: UIViewController {
         } else {
             // Continue game
             displayQuestion()
+            enableAnswerButton()
         }
     }
     
@@ -137,6 +140,7 @@ class ViewController: UIViewController {
         questionsAsked = 0
         numberOfCorrectQuestions = 0
         
+        showAnswerButton()
         enableAnswerButton()
         nextRound()
         
@@ -187,7 +191,7 @@ class ViewController: UIViewController {
     
     //use next question button to process to next question instead
     func loadNextRoundWithDelay(seconds: Int) {
-        
+        disableAnswerButton()
         // Converts a delay in seconds to nanoseconds as signed 64 bit integer
         let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
         // Calculates a time value to execute the method given current time and delay
