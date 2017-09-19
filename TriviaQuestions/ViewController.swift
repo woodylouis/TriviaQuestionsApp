@@ -31,7 +31,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var statusField: UILabel!
     @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var feedbackField: UILabel!
-    @IBOutlet weak var nextQuestion: UIButton!
+
+    @IBOutlet weak var nextQuestionButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
     
     
@@ -77,32 +78,33 @@ class ViewController: UIViewController {
         if (sender.titleLabel?.text == correctAnswer) {
             numberOfCorrectQuestions += 1
             statusField.isHidden = false
+            nextQuestionButton.isHidden = false
             statusField.text = "You got it!"
             playCorrectSound()
-            
+            disableAnswerButton()
+
             ///To show feedback
-            feedbackLabel.isHidden = false
-            feedbackField.isHidden = false
-            
+            showFeedback()
         } else {
             statusField.isHidden = false
             statusField.text = "Sorry, it is wrong!"
+            feedbackLabel.isHidden = false
+            feedbackField.isHidden = false
+            nextQuestionButton.isHidden = true
+            
             playWrongSound()
-        }
-        //loadNextRoundWithDelay(seconds: 2)
+            }
+        
     }
     
     func displayScore() {
         // Hide the answer button
         questionField.isHidden = true
-        answerA.isHidden = true
-        answerB.isHidden = true
-        answerC.isHidden = true
-        answerD.isHidden = true
-        nextQuestion.isHidden = true
+        
+        nextQuestionButton.isHidden = true
         playAgainButton.isHidden = false
-        feedbackLabel.isHidden = true
-        feedbackField.isHidden = true
+        showFeedback()
+        disableAnswerButton()
         
         statusField.isHidden = false
         statusField.text = "Way to go!\nYou got \(numberOfCorrectQuestions) out of \(questionsPerRound) correct!"
@@ -119,8 +121,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func goToNextQuestion(_ sender: Any) {
-        
-        
+        enableAnswerButton()
         if questionsAsked < questionsPerRound {
             displayQuestion()
         } else {
@@ -131,27 +132,62 @@ class ViewController: UIViewController {
     
     @IBAction func playAagin(_ sender: Any) {
         
-        //questions = listOfQuestions
-        
-        answerA.isHidden = false
-        answerB.isHidden = false
-        answerC.isHidden = false
-        answerD.isHidden = false
         questionField.isHidden = false
-        nextQuestion.isHidden = false
-        
+        nextQuestionButton.isHidden = false
         questionsAsked = 0
         numberOfCorrectQuestions = 0
+        
+        enableAnswerButton()
         nextRound()
         
     }
 
     
 
-    /*
+    
     // MARK: Helper Methods
-    // use next question button to process to next question instead
+    func disableAnswerButton() {
+        answerA.isEnabled = false
+        answerB.isEnabled = false
+        answerC.isEnabled = false
+        answerD.isEnabled = false
+    }
+    
+    func enableAnswerButton() {
+        answerA.isEnabled = true
+        answerB.isEnabled = true
+        answerC.isEnabled = true
+        answerD.isEnabled = true
+    }
+    
+    func hideAnswerButton() {
+        answerA.isHidden = true
+        answerB.isHidden = true
+        answerC.isHidden = true
+        answerD.isHidden = true
+    }
+    
+    func showAnswerButton() {
+        answerA.isHidden = false
+        answerB.isHidden = false
+        answerC.isHidden = false
+        answerD.isHidden = false
+    }
+    
+    
+    func showFeedback() {
+        feedbackLabel.isHidden = false
+        feedbackField.isHidden = false
+    }
+    
+    func disableFeedback() {
+        feedbackLabel.isHidden = true
+        feedbackField.isHidden = true
+    }
+    
+    //use next question button to process to next question instead
     func loadNextRoundWithDelay(seconds: Int) {
+        
         // Converts a delay in seconds to nanoseconds as signed 64 bit integer
         let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
         // Calculates a time value to execute the method given current time and delay
@@ -161,7 +197,8 @@ class ViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
             self.nextRound()
         }
-    } */
+        
+    }
     
     func loadGameStartSound() {
         let pathToSoundFile = Bundle.main.path(forResource: "GameSound", ofType: "wav")

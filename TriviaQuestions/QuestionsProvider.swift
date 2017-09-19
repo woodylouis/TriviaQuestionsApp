@@ -52,7 +52,7 @@ let question3 = QuestionsProvider(
 
 let question4 = QuestionsProvider(
     question: "A popular pastime amongst Chinese people is Tai chi, or Tai Ji Quan. What is it?",
-    choiceA: "A. low-motion martial arts",
+    choiceA: "A. slow-motion martial arts",
     choiceB: "B. A board game similar to chess",
     choiceC: "C. Breathing exercise",
     choiceD: "D. A form of martial arts which uses sticks",
