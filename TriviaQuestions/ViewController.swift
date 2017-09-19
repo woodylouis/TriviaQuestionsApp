@@ -75,11 +75,12 @@ class ViewController: UIViewController {
         //Increment the questions asked counter
         questionsAsked += 1
     
-        if (sender.titleLabel?.text == correctAnswer) {
+        if
+            (sender.titleLabel?.text == correctAnswer) {
             numberOfCorrectQuestions += 1
             statusField.isHidden = false
             nextQuestionButton.isHidden = false
-            statusField.text = "You got it!"
+            statusField.text = "That's correct!!"
             playCorrectSound()
             disableAnswerButton()
 
@@ -87,13 +88,14 @@ class ViewController: UIViewController {
             showFeedback()
         } else {
             statusField.isHidden = false
-            statusField.text = "Sorry, it is wrong! \nWait 3 second..."
+            statusField.text = "Sorry, it is wrong!\nThe answer is \(correctAnswer)\n"
             feedbackLabel.isHidden = false
             feedbackField.isHidden = false
-            nextQuestionButton.isHidden = true
-            //disableAnswerButton()
+            nextQuestionButton.isHidden = false
+            disableAnswerButton()
             playWrongSound()
-            loadNextRoundWithDelay(seconds: 3)
+            
+            //loadNextRoundWithDelay(seconds: 6)
             }
         
     }
@@ -191,6 +193,7 @@ class ViewController: UIViewController {
     
     //use next question button to process to next question instead
     func loadNextRoundWithDelay(seconds: Int) {
+        //when use this func, answer buttons will be disable
         disableAnswerButton()
         // Converts a delay in seconds to nanoseconds as signed 64 bit integer
         let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
