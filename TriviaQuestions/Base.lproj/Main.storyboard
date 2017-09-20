@@ -117,6 +117,24 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4h-kr-2hq">
+                                <rect key="frame" x="36" y="528" width="344" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.57647058819999997" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Enable Lighting Mode">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="enableLightingMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XRy-Lh-9gp"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niX-Ym-TFX">
+                                <rect key="frame" x="387" y="31" width="27" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.031372549019607843" green="0.16862745098039217" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -127,10 +145,12 @@
                         <outlet property="answerD" destination="x3a-8h-G4j" id="iXC-uP-1G4"/>
                         <outlet property="feedbackField" destination="owk-aW-WVP" id="T8N-MU-ajN"/>
                         <outlet property="feedbackLabel" destination="7jo-2u-vzH" id="qyI-OA-W5b"/>
+                        <outlet property="lightingModeButton" destination="F4h-kr-2hq" id="wA2-sa-Jbe"/>
                         <outlet property="nextQuestionButton" destination="brt-6H-LwG" id="wmr-zP-yzd"/>
                         <outlet property="playAgainButton" destination="bWu-mj-WAC" id="8O1-ah-nM4"/>
                         <outlet property="questionField" destination="hsL-VI-L3g" id="0uX-7B-8Ed"/>
                         <outlet property="statusField" destination="3JD-zy-9cf" id="agb-4W-G3C"/>
+                        <outlet property="timerLable" destination="niX-Ym-TFX" id="tgE-Sr-v7O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

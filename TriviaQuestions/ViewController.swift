@@ -19,10 +19,11 @@ class ViewController: UIViewController {
     var gameSound: SystemSoundID = 0
     var correctSound: SystemSoundID = 0
     var wrongSound: SystemSoundID = 0
+    var timeLength = 15
+    var timer = Timer()
+    
+    var timerIsRunning = true
 
-    
-    
-    
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var answerA: UIButton!
     @IBOutlet weak var answerB: UIButton!
@@ -31,17 +32,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var statusField: UILabel!
     @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var feedbackField: UILabel!
-
     @IBOutlet weak var nextQuestionButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
-    
-    
+    @IBOutlet weak var timerLable: UILabel!
+    @IBOutlet weak var lightingModeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadAllSound()
         displayQuestion()
         playGameStartSound()
+        makeRoundButtons()
+        timerLable.isHidden = true
+        timerIsRunning = false
     }
 
     
@@ -61,13 +64,14 @@ class ViewController: UIViewController {
         answerC.setTitle(questions.choiceC, for: .normal)
         answerD.setTitle(questions.choiceD, for: .normal)
         
+
+        
         //hide botton
         playAgainButton.isHidden = true
         feedbackField.isHidden = true
         feedbackLabel.isHidden = true
         statusField.isHidden = true
         nextQuestionButton.isHidden = true
-       
     }
     
     @IBAction func checkAnswer(_ sender: UIButton) {
@@ -79,9 +83,10 @@ class ViewController: UIViewController {
             statusField.isHidden = false
             nextQuestionButton.isHidden = false
             statusField.text = "That's correct!!"
+            enableAnswerButton()
             playCorrectSound()
             disableAnswerButton()
-            
+            timer.invalidate()
             ///To show feedback
             showFeedback()
         } else {
@@ -92,7 +97,7 @@ class ViewController: UIViewController {
             nextQuestionButton.isHidden = false
             disableAnswerButton()
             playWrongSound()
-            
+            timer.invalidate()
             //loadNextRoundWithDelay(seconds: 6)
         }
     }
@@ -106,7 +111,6 @@ class ViewController: UIViewController {
         showFeedback()
         hideAnswerButton()
         disableFeedback()
-        
         statusField.isHidden = false
         statusField.text = "Way to go!\nYou got \(numberOfCorrectQuestions) out of \(questionsPerRound) correct!"
     }
@@ -123,26 +127,35 @@ class ViewController: UIViewController {
     }
     
     @IBAction func goToNextQuestion(_ sender: Any) {
-        enableAnswerButton()
+        
         if questionsAsked < questionsPerRound {
             displayQuestion()
+            enableAnswerButton()
         } else {
             displayScore()
         }
+        
+        if timerIsRunning == true {
+            timeLength = 16
+            enableTimer()
+        } else {
+            return
+        }
     }
- 
+    
     
     @IBAction func playAagin(_ sender: Any) {
         
         questionField.isHidden = false
         nextQuestionButton.isHidden = false
+        lightingModeButton.isEnabled = true
         questionsAsked = 0
         numberOfCorrectQuestions = 0
-        
+        timeLength = 16
         showAnswerButton()
         enableAnswerButton()
+        timer.invalidate()
         nextRound()
-        
     }
 
     
@@ -239,7 +252,53 @@ class ViewController: UIViewController {
         loadCorrectSound()
         loadWrongSound()
     }
+    
+    //  Button UI
+    func makeRoundButtons() {
+        answerA.layer.cornerRadius = 6
+        answerB.layer.cornerRadius = 6
+        answerC.layer.cornerRadius = 6
+        answerD.layer.cornerRadius = 6
+        nextQuestionButton.layer.cornerRadius = 6
+        playAgainButton.layer.cornerRadius = 6
+    }
+    
+    //Timer
+    
+    @IBAction func enableLightingMode(_ sender: Any) {
+    
+        enableTimer()
+        timerLable.isHidden = false
+        timerIsRunning = true
+    }
+    
+    
+    func enableTimer() {
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
+        lightingModeButton.setTitle("Lighting Mode is Activated", for: .normal)
+        lightingModeButton.isEnabled = false
+    }
+    
+    func updateTimer() {
+
+        if timeLength <= 0 {
+            timer.invalidate()
+            statusField.text = "Oh! Time is up! Press 'Next Question'"
+            disableAnswerButton()
+            nextQuestionButton.isHidden = false
+            loadWrongSound()
+            //questionsAsked += 1
+            timeLength = 16
+            timerLable.text = "0"
+        } else {
+            timeLength -= 1
+            timerLable.text = "\(timeLength)"
+        }
+    }
 }
+
+
 
 
 
