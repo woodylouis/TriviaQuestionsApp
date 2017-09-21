@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         
 
         
-        //hide botton
+        //hide bottons
         playAgainButton.isHidden = true
         feedbackField.isHidden = true
         feedbackLabel.isHidden = true
@@ -105,14 +105,23 @@ class ViewController: UIViewController {
     func displayScore() {
         // Hide the answer button
         questionField.isHidden = true
-        
         nextQuestionButton.isHidden = true
         playAgainButton.isHidden = false
+        statusField.isHidden = false
+        timerLable.isHidden = true
+        
         showFeedback()
         hideAnswerButton()
         disableFeedback()
-        statusField.isHidden = false
         statusField.text = "Way to go!\nYou got \(numberOfCorrectQuestions) out of \(questionsPerRound) correct!"
+        timerLable.text = "15"
+        
+        //when light mode is on, the timer will turn off
+        if timerIsRunning == true {
+            timer.invalidate()
+        } else {
+            return
+        }
     }
     
     func nextRound() {
@@ -135,6 +144,7 @@ class ViewController: UIViewController {
             displayScore()
         }
         
+        //when light mode is on, time length will be set back to 15 second
         if timerIsRunning == true {
             timeLength = 16
             enableTimer()
@@ -143,12 +153,12 @@ class ViewController: UIViewController {
         }
     }
     
-    
     @IBAction func playAagin(_ sender: Any) {
         
         questionField.isHidden = false
         nextQuestionButton.isHidden = false
         lightingModeButton.isEnabled = true
+        timerIsRunning = false
         questionsAsked = 0
         numberOfCorrectQuestions = 0
         timeLength = 16
@@ -156,6 +166,8 @@ class ViewController: UIViewController {
         enableAnswerButton()
         timer.invalidate()
         nextRound()
+        
+        lightingModeButton.setTitle("Enable Lighting Mode", for: .normal)
     }
 
     
@@ -261,17 +273,16 @@ class ViewController: UIViewController {
         answerD.layer.cornerRadius = 6
         nextQuestionButton.layer.cornerRadius = 6
         playAgainButton.layer.cornerRadius = 6
+        lightingModeButton.layer.cornerRadius = 6
     }
     
     //Timer
     
     @IBAction func enableLightingMode(_ sender: Any) {
-    
         enableTimer()
         timerLable.isHidden = false
         timerIsRunning = true
     }
-    
     
     func enableTimer() {
         
@@ -280,7 +291,7 @@ class ViewController: UIViewController {
         lightingModeButton.isEnabled = false
     }
     
-    func updateTimer() {
+    @objc func updateTimer() {
 
         if timeLength <= 0 {
             timer.invalidate()
@@ -296,8 +307,8 @@ class ViewController: UIViewController {
             timerLable.text = "\(timeLength)"
         }
     }
-}
-
+    
+    }
 
 
 
