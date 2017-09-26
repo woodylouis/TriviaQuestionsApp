@@ -20,8 +20,7 @@ class ViewController: UIViewController {
     var correctSound: SystemSoundID = 0
     var wrongSound: SystemSoundID = 0
     var timeLength = 15
-    var timer = Timer()
-    
+    var timer = Timer()    
     var timerIsRunning = true
 
     @IBOutlet weak var questionField: UILabel!
@@ -307,8 +306,7 @@ class ViewController: UIViewController {
             timerLable.text = "\(timeLength)"
         }
     }
-    
-    }
+}
 
 
 
